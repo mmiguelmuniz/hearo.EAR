@@ -1,0 +1,97 @@
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 90px 16px 24px 16px !important;
+    min-height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .hero-text-container {
+    min-width: 100% !important;
+    width: 100% !important;
+    padding: 16px 0 8px 0 !important;
+    text-align: center !important;
+  }
+
+  .hero-title {
+    font-size: 2.2rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero-image-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    gap: 10px !important;
+    transform: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 8px 0 4px 0 !important;
+    margin-top: 8px !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero-image-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-card {
+    min-width: 72vw !important;
+    width: 72vw !important;
+    max-width: 260px !important;
+    height: 190px !important;
+    flex-shrink: 0 !important;
+    margin-top: 0 !important;
+    border-radius: 12px !important;
+    scroll-snap-align: center;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .hero-card-1,
+  .hero-card-2,
+  .hero-card-3 {
+    height: 190px !important;
+    margin-top: 0 !important;
+  }
+
+  .hero-wave {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 85px 12px 20px 12px !important;
+  }
+
+  .hero-title {
+    font-size: 1.9rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.98rem !important;
+  }
+
+  .hero-card,
+  .hero-card-1,
+  .hero-card-2,
+  .hero-card-3 {
+    min-width: 78vw !important;
+    width: 78vw !important;
+    max-width: 235px !important;
+    height: 170px !important;
+  }
+}
