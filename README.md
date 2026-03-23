@@ -1,73 +1,35 @@
-# React + TypeScript + Vite
+🦅 HEaRO Initiative - Shaping the Future
+A HEaRO Initiative é uma plataforma dedicada a transformar a experiência educacional através de melhorias em infraestrutura e programas dedicados. Este site serve como o portal oficial para doadores e membros da comunidade acompanharem o progresso dos projetos e realizarem contribuições significativas.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Destaques do Projeto
+Hero Section Dinâmica: Layout exclusivo com tiras de imagens inclinadas e animações suaves via framer-motion.
 
-Currently, two official plugins are available:
+Gestão de Impacto: Visualização clara de estatísticas, incluindo alunos impactados, novos programas e metas financeiras para 2026.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Conteúdo Multimídia: Integração de vídeo institucional "HEaRO in Action" via YouTube Embed.
 
-## React Compiler
+Círculos de Reconhecimento: Sistema de níveis para doadores, incentivando a filantropia contínua.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Responsividade Adaptativa: Design otimizado para Desktop e Smartphones, garantindo que pais e doadores tenham uma experiência fluida em qualquer dispositivo.
 
-## Expanding the ESLint configuration
+🛠️ Tecnologias Utilizadas
+React (Vite): Framework principal para uma interface reativa e rápida.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+TypeScript: Garantia de tipagem e segurança no desenvolvimento dos componentes.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Framer Motion: Utilizado para animações de entrada e interações de hover nos cards de projetos.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+CSS Customizado: Estrutura de Grid e Flexbox com foco em design de alta fidelidade.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+📈 Regras de Negócio Importantes
+Progressão de Doadores
+"Donors automatically move to the next recognition level once their cumulative contributions reach the required amount."
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O site foi construído para refletir essa transparência: cada contribuição é somada ao histórico do doador, permitindo que ele suba de nível (Bronze, Silver, Gold, etc.) organicamente conforme seu impacto cresce.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+📂 Estrutura de Arquivos Principal
+src/components/Hero.tsx: Componente principal de introdução com design inclinado.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src/components/Impact.tsx: Seção de estatísticas e vídeo institucional.
+
+src/styles/hero.css: Regras de estilização e media queries para responsividade mobile.
