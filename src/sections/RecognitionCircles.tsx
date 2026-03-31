@@ -1,18 +1,26 @@
 import { HEARO_LEVELS, SPECIAL_RECOGNITION } from '../data/donationLevel';
 import { Award, Gem, Crown } from 'lucide-react';
+import hearoLogo from '../assets/hearo_texto.png';
 
 export const RecognitionCircles = () => {
   return (
     <section id="recognition" style={{ padding: '80px 5%', textAlign: 'center' }}>
-      <h2 style={{ fontSize: '2.5rem', color: '#00337C', marginBottom: '10px' }}>
-        Recognition Circles - HERO Honor Wall
+      <h2 style={{ fontSize: '2.5rem', color: '#00337C', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+        Recognition Circles -
+        <img src={hearoLogo} alt="HEaRO" style={{ height: '2.5rem', width: 'auto', verticalAlign: 'middle' }} />
+        Honor Wall
       </h2>
       <p style={{ maxWidth: '800px', margin: '0 auto 40px', color: '#666' }}>
         Donors and families will be recognized on our official Honor Wall according to their contribution category.
       </p>
 
       {/* Categorias Base HEaRO */}
-      <h3 style={{ color: '#8b1d22', marginBottom: '30px', fontSize: '1.8rem' }}>HEARO Categories</h3>
+      <h3 style={{ marginBottom: '30px', fontSize: '1.8rem', color: '#333' }}>
+        <span style={{ color: '#D41116' }}>H</span>
+        <span style={{ color: '#287A97' }}>EaR</span>
+        <span style={{ color: '#D41116' }}>O</span>
+        {' '}Categories
+      </h3>
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 

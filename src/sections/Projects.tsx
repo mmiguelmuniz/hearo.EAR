@@ -15,19 +15,19 @@ interface Project {
 export const Projects: React.FC = () => {
   const projects: Project[] = [
     {
-      title: 'Dance & Movement Studio',
+      title: 'Creative Movement Studio - Dance Studio',
       description: 'A dedicated space for dance, ballet, and creative movement programs.',
       status: 'Completed',
       image: dancaImg
     },
     {
-      title: 'Martial Arts & Physical Education',
+      title: 'Creative Movement Studio -  Martial Arts Dojo',
       description: 'Building character, discipline, and physical fitness through martial arts.',
       status: 'Completed',
       image: judoImg
     },
     {
-      title: 'New Playground & Park',
+      title: 'Coming soon',
       description: 'Expanding our outdoor spaces for better student engagement.',
       status: 'In Progress',
       image: parkImg

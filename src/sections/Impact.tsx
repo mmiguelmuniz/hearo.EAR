@@ -1,4 +1,3 @@
-
 export const Impact = () => {
   const stats = [
     { label: 'Students Impacted', value: '500+' },
@@ -50,7 +49,7 @@ export const Impact = () => {
           <iframe 
             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
             /* IMPORTANTE: A URL para iframe deve usar /embed/ em vez de /watch?v= */
-            src="https://www.youtube.com/embed/OwWJRTXwwas" 
+            src="https://www.youtube.com/embed/A_KGyEaAK3g" 
             title="HEaRO in Action"
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

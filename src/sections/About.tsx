@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'; // Importamos o motion
 import { Target, Sparkles, Users } from 'lucide-react';
+import hearoLogo from '../assets/hearo_texto.png';
 
 export const About: React.FC = () => {
   const pillars = [
@@ -16,8 +17,14 @@ export const About: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 style={{ fontSize: '2.5rem', color: '#00337C', marginBottom: '20px' }}>
-          What is <span style={{ color: '#8b1d22' }}>HE</span>a<span style={{ color: '#00A8E8' }}>RO</span>?
+        <h2 style={{ fontSize: '2.5rem', color: '#00337C', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          What is
+          <img
+            src={hearoLogo}
+            alt="HEaRO"
+            style={{ height: '2.5rem', width: 'auto', verticalAlign: 'middle' }}
+          />
+          ?
         </h2>
         <p style={{ maxWidth: '800px', margin: '0 auto 50px', lineHeight: '1.6' }}>
           HEaRO is EAR's Advancement Program. It strengthens our community and empowers us to make strategic structural and academic improvements.
