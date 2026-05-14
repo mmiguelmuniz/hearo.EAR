@@ -1,124 +1,132 @@
-import { motion } from 'framer-motion';
-import './hero.css';
-
-// Assets
-import rafaelImg from '../assets/aula-rafael_pronto.png';
-import dancaImg from '../assets/aula-dança_pronto.png';
-import judoImg from '../assets/aulo-judô_pronto.png';
-import ondaBranca from '../assets/onda_branca.png';
-
-const sectionStyle: React.CSSProperties = {
-  minHeight: '100vh',
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  padding: '0 0 0 8%',
-  backgroundColor: '#00337C',
-  overflow: 'hidden',
-  position: 'relative',
-  flexWrap: 'wrap',
-};
-
-const textContainerStyle: React.CSSProperties = {
-  flex: 1,
-  minWidth: '350px',
-  zIndex: 2,
-  padding: '100px 0',
-};
-
-const titleStyle: React.CSSProperties = {
-  color: 'white',
-  fontSize: '3.5rem',
-  lineHeight: '1.1',
-  marginBottom: '20px',
-  fontFamily: 'serif',
-};
-
-const subtitleStyle: React.CSSProperties = {
-  color: 'white',
-  fontSize: '1.5rem',
-  opacity: 0.9,
-};
-
-const imageGridStyle: React.CSSProperties = {
-  flex: 1.2,
-  height: '100vh',
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  gap: '10px',
-  transform: 'skewX(-10deg) translateX(50px)',
-  minWidth: '500px',
-};
-
-const waveStyle: React.CSSProperties = {
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  width: '100%',
-  opacity: 0.1,
-  pointerEvents: 'none',
-};
-
-const createImageStyle = (
-  image: string,
-  backgroundPosition: string,
-  height: string,
-  marginTop?: string
-): React.CSSProperties => ({
-  backgroundImage: `url(${image})`,
-  backgroundSize: 'cover',
-  backgroundPosition,
-  height,
-  marginTop,
-  backgroundRepeat: 'no-repeat',
-});
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import bannerImg from '../assets/banner-hero.png';
+import hearoLogo from '../assets/hearo_texto.png';
 
 export const Hero: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+
   return (
-    <section className="hero-section" style={sectionStyle}>
-      <div className="hero-text-container" style={textContainerStyle}>
+    <section
+      ref={sectionRef}
+      style={{
+        minHeight: '100vh',
+        width: '100%',
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'hidden',
+      }}
+    >
+      <motion.img
+        src={bannerImg}
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '120%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          top: '-10%',
+          y: imageY,
+        }}
+      />
+
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to right, rgba(0,30,90,0.85) 0%, rgba(0,30,90,0.55) 55%, rgba(0,30,90,0.10) 100%)',
+      }} />
+
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        width: '100%',
+        maxWidth: '1200px',
+        padding: '120px 6% 80px',
+        boxSizing: 'border-box',
+      }}>
         <motion.h1
-          className="hero-title"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          style={titleStyle}
+          transition={{ duration: 0.7 }}
+          style={{
+            color: 'white',
+            fontSize: 'clamp(2.2rem, 5vw, 4rem)',
+            lineHeight: '1.15',
+            marginBottom: '24px',
+            fontFamily: 'Lato, sans-serif',
+            maxWidth: '600px',
+          }}
         >
-          Now it&apos;s time to <br />
-          <span style={{ fontStyle: 'italic' }}>shape the future.</span>
+          Now it's time to{' '}
+          <span style={{ fontStyle: 'italic', display: 'block', textTransform: 'none' }}>
+            shape the future.
+          </span>
         </motion.h1>
 
         <motion.p
-          className="hero-subtitle"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          style={subtitleStyle}
+          transition={{ delay: 0.4 }}
+          style={{
+            color: 'rgba(255,255,255,0.95)',
+            fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)',
+            fontWeight: '700',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            flexWrap: 'wrap',
+            letterSpacing: '0.5px',
+          }}
         >
           Be a{' '}
-          <span style={{ fontWeight: 'bold' }}>
-            HE<span style={{ color: '#00A8E8' }}>a</span>RO
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0px' }}>
+            <img
+              src={hearoLogo}
+              alt="HEaRO"
+              style={{
+                height: '2em',
+                width: 'auto',
+                verticalAlign: 'middle',
+                display: 'inline-block',
+              }}
+            />
+            <span style={{ color: 'rgba(255,255,255,0.95)', fontWeight: '700' }}>.</span>
           </span>
-          . Leave your legacy.
+          {' '}Leave your Legacy.
         </motion.p>
       </div>
 
-      <div className="hero-image-grid" style={imageGridStyle}>
-        <div
-          className="hero-card hero-card-1"
-          style={createImageStyle(rafaelImg, '55% center', '110%', '-5%')}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        style={{ position: 'absolute', bottom: '32px', left: '50%', transform: 'translateX(-50%)', zIndex: 2 }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          style={{
+            width: '24px',
+            height: '24px',
+            borderRight: '2px solid rgba(255,255,255,0.6)',
+            borderBottom: '2px solid rgba(255,255,255,0.6)',
+            transform: 'rotate(45deg)',
+          }}
         />
-        <div
-          className="hero-card hero-card-2"
-          style={createImageStyle(dancaImg, '30% center', '110%', '-10%')}
-        />
-        <div
-          className="hero-card hero-card-3"
-          style={createImageStyle(judoImg, '60% center', '110%')}
-        />
-      </div>
-
-      <img className="hero-wave" src={ondaBranca} alt="" style={waveStyle} />
+      </motion.div>
     </section>
   );
 };
