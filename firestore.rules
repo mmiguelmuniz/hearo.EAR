@@ -1,0 +1,34 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Lista de administradores. Para dar ou tirar acesso:
+    //   1. edite esta lista (e-mails em minúsculas);
+    //   2. rode: firebase deploy --only firestore:rules
+    //   3. crie ou remova o usuário em Authentication, no console do Firebase.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email in [
+          'miguel.muniz@ear.com.br',
+          'it.firebase@ear.com.br',
+          'loreny.roth@ear.com.br'
+        ];
+    }
+
+    // Uma doação por linha da planilha.
+    match /doacoes/{doacaoId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Uma família por ID (guarda o segmento: ECC, Secondary ou Ambos).
+    match /familias/{familiaId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Todo o resto fica bloqueado.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
