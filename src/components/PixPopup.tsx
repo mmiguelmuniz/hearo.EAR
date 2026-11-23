@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { X, Copy, Check, ClipboardList } from 'lucide-react';
-import qrCode from '../assets/qr.jpg';
+import qrCode from '../assets/qr.webp';
 
 const FORMS_URL = 'https://forms.gle/dqbKrV2eHtuJPj1P7';
 

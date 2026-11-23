@@ -9,6 +9,7 @@ import photo5 from '../assets/italo.webp';
 import photo6 from '../assets/menelau.webp';
 import photo7 from '../assets/maranhao.webp';
 import photo8 from '../assets/borba.webp';
+import photo9 from '../assets/zonari.jpg.jpeg';
 
 interface Testimonial {
   quote: string;
@@ -24,6 +25,13 @@ const testimonials: Testimonial[] = [
     name: 'Machado G. Maranhão Family',
     role: 'EAR Donor Family',
     photo: photo7,
+    photoPosition: 'center center',
+  },
+  {
+    quote: 'Ficamos muito felizes em ver nossas filhas estudando, crescendo e se desenvolvendo na mesma escola onde o pai delas se formou. É emocionante acompanhar toda a transformação da escola e perceber como ela evolui e se fortalece a cada dia, sempre buscando oferecer o melhor para seus alunos e famílias. Para nós, fazer parte do programa HEaRO foi uma escolha extremamente importante, pois representa um investimento no futuro dos nossos filhos e também uma forma de contribuir para que outras famílias continuem vivendo a experiência de pertencer a uma comunidade tão unida, acolhedora e querida por todos nós.',
+    name: 'Zonari Larsen Family',
+    role: 'EAR Donor Family',
+    photo: photo9,
     photoPosition: 'center center',
   },
   {
@@ -114,17 +122,14 @@ export const Feedback: React.FC = () => {
 
       <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative' }}>
         <div key={current} style={{ backgroundColor: 'white', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.10)', animation: 'fadeIn 0.4s ease', display: 'flex', minHeight: '380px' }} className="feedback-card">
-
           <div style={{ width: '40%', flexShrink: 0, position: 'relative', overflow: 'hidden' }} className="feedback-photo-side">
             <img src={t.photo} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: t.photoPosition || 'center center', display: 'block' }} />
-            {/* Overlay reduzido para mostrar mais a foto */}
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent 85%, rgba(255,255,255,0.3) 100%)' }} className="feedback-photo-overlay" />
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px', background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)' }}>
               <h4 style={{ color: 'white', fontWeight: '900', fontSize: '1rem', margin: 0 }}>{t.name}</h4>
               <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.8rem', margin: '4px 0 0' }}>{t.role}</p>
             </div>
           </div>
-
           <div style={{ flex: 1, padding: '50px 50px 50px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'left' }} className="feedback-text-side">
             <Quote size={36} color="#D41116" style={{ marginBottom: '20px', opacity: 0.2 }} />
             <p style={{ fontSize: '1.05rem', lineHeight: '1.85', fontStyle: 'italic', color: '#333' }}>

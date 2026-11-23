@@ -7,15 +7,20 @@ import judoImg from '../assets/aulo-judô_pronto.webp';
 import praca1 from '../assets/praça1.webp';
 import praca2 from '../assets/praça2.webp';
 import praca3 from '../assets/praça3.webp';
+import praca4 from '../assets/praça4.webp';
+import praca5 from '../assets/praça5.webp';
+import praca6 from '../assets/praça6.webp';
+import praca7 from '../assets/praça7.webp';
+import praca8 from '../assets/praça8.webp';
 
-import pk4_1 from '../assets/pk4-1.jpg';
-import pk4_2 from '../assets/pk4-2.jpg';
-import pk4_3 from '../assets/pk4-3.jpg';
-import pk4_4 from '../assets/pk4-4.jpg';
+import pk4_1 from '../assets/pk4-1.webp';
+import pk4_2 from '../assets/pk4-2.webp';
+import pk4_3 from '../assets/pk4-3.webp';
+import pk4_4 from '../assets/pk4-4.webp';
 
-import nursey1 from '../assets/nursey1.jpg';
-import nursey2 from '../assets/nursey2.jpg';
-import nursey3 from '../assets/nursey3.jpg';
+import nursey1 from '../assets/nursey1.webp';
+import nursey2 from '../assets/nursey2.webp';
+import nursey3 from '../assets/nursey3.webp';
 
 import purple1 from '../assets/purple1.webp';
 import purple2 from '../assets/purple2.webp';
@@ -24,13 +29,13 @@ import purple4 from '../assets/purple4.webp';
 
 import rooftop1 from '../assets/rooftop1.webp';
 import rooftop2 from '../assets/rooftop2.webp';
-import rooftop3 from '../assets/rooftop3.png';
+import rooftop3 from '../assets/rooftop3.webp';
 import rooftop4 from '../assets/rooftop4.webp';
 import rooftop5 from '../assets/rooftop5.webp';
-import phase1 from '../assets/phase1.jpg';
-import phase2 from '../assets/phase2.jpg';
-import antes from '../assets/antes.jpg'; // Elementary Park — Before
-import depois from '../assets/depois.png'; // Elementary Park — After
+import phase1 from '../assets/p1.png';
+import phase2 from '../assets/p2.png';
+import antes from '../assets/antes.webp';
+import depois from '../assets/depois.webp';
 
 type StatusType = 'Completed' | 'Fundraising in Progress' | 'Planning';
 
@@ -52,7 +57,6 @@ const statusColors: Record<StatusType, string> = {
   'Planning': '#D41116',
 };
 
-// ── Carrossel ──────────────────────────────────────────────
 const ProjectCarousel: React.FC<{ images: string[]; height?: string }> = ({ images, height = '420px' }) => {
   const [current, setCurrent] = useState(0);
   const prev = (e: React.MouseEvent) => { e.stopPropagation(); setCurrent((p) => (p - 1 + images.length) % images.length); };
@@ -83,7 +87,6 @@ const ProjectCarousel: React.FC<{ images: string[]; height?: string }> = ({ imag
   );
 };
 
-// ── Slider Antes/Depois ────────────────────────────────────
 const BeforeAfterSlider: React.FC<{ before: string; after: string }> = ({ before, after }) => {
   const [position, setPosition] = React.useState(50);
   const [dragging, setDragging] = React.useState(false);
@@ -103,16 +106,7 @@ const BeforeAfterSlider: React.FC<{ before: string; after: string }> = ({ before
   const onTouchMove = (e: React.TouchEvent) => { if (dragging) updatePosition(e.touches[0].clientX); };
 
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
-      onTouchMove={onTouchMove}
-      onTouchStart={onTouchStart}
-      onTouchEnd={() => setDragging(false)}
-      style={{ position: 'relative', width: '100%', height: '100%', cursor: 'col-resize', userSelect: 'none', overflow: 'hidden' }}
-    >
+    <div ref={containerRef} onMouseMove={onMouseMove} onMouseUp={onMouseUp} onMouseLeave={onMouseUp} onTouchMove={onTouchMove} onTouchStart={onTouchStart} onTouchEnd={() => setDragging(false)} style={{ position: 'relative', width: '100%', height: '100%', cursor: 'col-resize', userSelect: 'none', overflow: 'hidden' }}>
       <img src={after} alt="After" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', inset: 0, width: `${position}%`, overflow: 'hidden' }}>
         <img src={before} alt="Before" style={{ position: 'absolute', inset: 0, width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', pointerEvents: 'none' }} />
@@ -131,10 +125,8 @@ const BeforeAfterSlider: React.FC<{ before: string; after: string }> = ({ before
   );
 };
 
-// ── Contador de Arrecadação ────────────────────────────────
 const FundraisingCounter: React.FC<{ raised: number; goal: number }> = ({ raised, goal }) => {
   const pct = Math.min((raised / goal) * 100, 100);
-
   return (
     <div style={{ marginBottom: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
@@ -150,10 +142,8 @@ const FundraisingCounter: React.FC<{ raised: number; goal: number }> = ({ raised
   );
 };
 
-// ── Modal ──────────────────────────────────────────────────
 const Modal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   const [current, setCurrent] = useState(0);
-
   return (
     <div onClick={onClose} style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.7)', zIndex: 9990, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '12px', overflowY: 'auto' }}>
       <div onClick={(e) => e.stopPropagation()} style={{ backgroundColor: 'white', borderRadius: '20px', maxWidth: '860px', width: '100%', marginTop: '20px', marginBottom: '20px', boxShadow: '0 24px 60px rgba(0,0,0,0.3)', animation: 'fadeIn 0.25s ease' }}>
@@ -196,7 +186,6 @@ const Modal: React.FC<{ project: Project; onClose: () => void }> = ({ project, o
   );
 };
 
-// ── Card horizontal ────────────────────────────────────────
 const ProjectCard: React.FC<{ project: Project; onLearnMore: () => void; reverse?: boolean }> = ({ project, onLearnMore, reverse }) => {
   const isCarousel = project.images.length > 1;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
@@ -204,17 +193,7 @@ const ProjectCard: React.FC<{ project: Project; onLearnMore: () => void; reverse
   return (
     <div
       onClick={onLearnMore}
-      style={{
-        backgroundColor: 'white',
-        borderRadius: '20px',
-        overflow: 'hidden',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-        display: 'flex',
-        flexDirection: isMobile ? 'column' : (reverse ? 'row-reverse' : 'row'),
-        transition: 'box-shadow 0.3s ease',
-        minHeight: isMobile ? 'unset' : '320px',
-        cursor: 'pointer',
-      }}
+      style={{ backgroundColor: 'white', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', display: 'flex', flexDirection: isMobile ? 'column' : (reverse ? 'row-reverse' : 'row'), transition: 'box-shadow 0.3s ease', minHeight: isMobile ? 'unset' : '320px', cursor: 'pointer' }}
       onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 12px 36px rgba(0,0,0,0.14)'; }}
       onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)'; }}
     >
@@ -222,13 +201,10 @@ const ProjectCard: React.FC<{ project: Project; onLearnMore: () => void; reverse
         {isCarousel ? (
           <ProjectCarousel images={project.images} height="100%" />
         ) : (
-          <img
-              src={project.images[0]}
-              alt={project.title}
-              style={{ width: '100%', height: isMobile ? '240px' : '100%', minHeight: isMobile ? 'unset' : '320px', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.5s ease' }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            />
+          <img src={project.images[0]} alt={project.title} style={{ width: '100%', height: isMobile ? '240px' : '100%', minHeight: isMobile ? 'unset' : '320px', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.5s ease' }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+          />
         )}
         <span style={{ position: 'absolute', top: '16px', left: isMobile ? '16px' : (reverse ? 'auto' : '16px'), right: isMobile ? 'auto' : (reverse ? '16px' : 'auto'), backgroundColor: statusColors[project.status], color: 'white', padding: '6px 16px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 'bold', textTransform: 'uppercase', zIndex: 4, boxShadow: '0 2px 6px rgba(0,0,0,0.2)' }}>
           {project.status}
@@ -254,7 +230,6 @@ const ProjectCard: React.FC<{ project: Project; onLearnMore: () => void; reverse
   );
 };
 
-// ── Separador de grupo ─────────────────────────────────────
 const GroupDivider: React.FC<{ label: string; color: string }> = ({ label, color }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: '20px 0 10px' }}>
     <div style={{ flex: 1, height: '1px', backgroundColor: '#e0e0e0' }} />
@@ -263,7 +238,6 @@ const GroupDivider: React.FC<{ label: string; color: string }> = ({ label, color
   </div>
 );
 
-// ── Componente principal ───────────────────────────────────
 export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -276,7 +250,7 @@ export const Projects: React.FC = () => {
       sliderBefore: phase1,
       sliderAfter: phase2,
       details: 'A multi-use rooftop space featuring a social lounge area and an auditorium for events. Fundraising is currently open for Phase 1 of the project, with a goal of R$ 482,708.37 for the enclosure and climate control of the area. Upon completion of Phase 1, we will launch the fundraising for Phase 2, which covers Interior Design and Decoration, estimated at R$ 422,609.37 (subject to market fluctuations).',
-      raised: 0,
+      raised: 244239,
       goal: 482708,
     },
     {
@@ -312,7 +286,7 @@ export const Projects: React.FC = () => {
       title: 'Central Park',
       description: 'A central gathering space for our school community.',
       status: 'Planning',
-      images: [praca1, praca2, praca3],
+      images: [praca1, praca2, praca3, praca4, praca5, praca6, praca7, praca8],
       details: 'The Central Park is envisioned as a central gathering and recreation space for our entire school community — students, families, and staff. The project aims to create a welcoming outdoor hub that fosters connection and community spirit. Detailed plans and fundraising information will be announced in the near future as the project moves into its next phase.',
     },
     {
